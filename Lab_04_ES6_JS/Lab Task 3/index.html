@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab Task 3 - Form Validation</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        input { display: block; margin: 10px 0; padding: 5px; }
+        .error { border: 2px solid red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+
+<h2>Form Validation</h2>
+
+<form id="myForm">
+    <input type="text" id="name" placeholder="Enter Name">
+    <input type="email" id="email" placeholder="Enter Email">
+    <button type="submit">Submit</button>
+</form>
+
+<p id="message"></p>
+
+<script>
+$(document).ready(function(){
+
+    $("input").blur(function(){
+        if($(this).val() === ""){
+            $(this).addClass("error");
+        } else {
+            $(this).removeClass("error");
+        }
+    });
+
+    $("#myForm").submit(function(e){
+        e.preventDefault();
+
+        if($("#name").val() !== "" && $("#email").val() !== ""){
+            $("#message")
+                .text("Form Submitted Successfully!")
+                .addClass("success");
+        }
+    });
+
+});
+</script>
+
+</body>
+</html>

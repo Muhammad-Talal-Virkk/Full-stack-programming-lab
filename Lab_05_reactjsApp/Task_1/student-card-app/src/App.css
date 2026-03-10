@@ -1,0 +1,12 @@
+.container {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.container div {
+  display: inline-block;
+}

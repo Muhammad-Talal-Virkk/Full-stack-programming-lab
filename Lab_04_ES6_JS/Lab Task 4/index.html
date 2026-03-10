@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab Task 4 - Tabs</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body { font-family: Arial; }
+        .tab { cursor: pointer; padding: 10px; display: inline-block; background: #eee; margin: 5px; }
+        .content { display: none; padding: 20px; border: 1px solid #ccc; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<h2>Tabbed Content</h2>
+
+<div class="tab" data-target="#tab1">Tab 1</div>
+<div class="tab" data-target="#tab2">Tab 2</div>
+<div class="tab" data-target="#tab3">Tab 3</div>
+<div class="tab" data-target="#tab4">Tab 4</div>
+
+<div id="tab1" class="content">Content of Tab 1</div>
+<div id="tab2" class="content">Content of Tab 2</div>
+<div id="tab3" class="content">Content of Tab 3</div>
+<div id="tab4" class="content">Content of Tab 4</div>
+
+<script>
+$(document).ready(function(){
+
+    $(".tab").click(function(){
+
+        var target = $(this).data("target");
+
+        $(".content").slideUp();
+        $(target).slideDown();
+
+        $("html, body").animate({
+            scrollTop: $(target).offset().top
+        }, 500);
+
+    });
+
+});
+</script>
+
+</body>
+</html>

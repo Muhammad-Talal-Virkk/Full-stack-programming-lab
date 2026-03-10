@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab Task 8 - Quiz</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .question { margin-bottom: 10px; }
+        button { margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<h2>Simple Quiz Game</h2>
+
+<div id="quiz">
+    <div class="question"></div>
+    <div class="options"></div>
+    <button id="next">Next</button>
+</div>
+
+<p id="result"></p>
+
+<script>
+$(document).ready(function(){
+
+    var questions = [
+        {
+            q: "What is 2 + 2?",
+            options: ["3", "4", "5"],
+            answer: 1
+        },
+        {
+            q: "Capital of Pakistan?",
+            options: ["Lahore", "Karachi", "Islamabad"],
+            answer: 2
+        }
+    ];
+
+    var index = 0;
+    var score = 0;
+
+    function loadQuestion(){
+        $(".question").text(questions[index].q);
+        $(".options").empty();
+
+        $.each(questions[index].options, function(i, option){
+            $(".options").append(
+                "<div><input type='radio' name='opt' value='"+i+"'> "
+                + option + "</div>"
+            );
+        });
+    }
+
+    $("#next").click(function(){
+
+        var selected = $("input[name='opt']:checked").val();
+
+        if(selected == questions[index].answer){
+            score++;
+        }
+
+        index++;
+
+        if(index < questions.length){
+            loadQuestion();
+        } else {
+            $("#quiz").hide();
+            $("#result").text("Your Score: " + score);
+        }
+    });
+
+    loadQuestion();
+
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab Task 5 - Style Editor</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        #text { border: 1px solid #ccc; padding: 15px; margin-top: 10px; }
+        button { margin: 5px; }
+    </style>
+</head>
+<body>
+
+<h2>Chained Style Editor</h2>
+
+<button id="applyStyle">Apply Styles</button>
+<button id="toggleBold">Bold</button>
+<button id="toggleItalic">Italic</button>
+
+<div id="text">
+    This is editable text block.
+</div>
+
+<script>
+$(document).ready(function(){
+
+    $("#applyStyle").click(function(){
+        $("#text")
+            .css("font-size", "20px")
+            .css("color", "white")
+            .css("background-color", "teal");
+    });
+
+    $("#toggleBold").click(function(){
+        $("#text").css("font-weight",
+            $("#text").css("font-weight") == "700" ? "400" : "700"
+        );
+    });
+
+    $("#toggleItalic").click(function(){
+        $("#text").css("font-style",
+            $("#text").css("font-style") == "italic" ? "normal" : "italic"
+        );
+    });
+
+});
+</script>
+
+</body>
+</html>

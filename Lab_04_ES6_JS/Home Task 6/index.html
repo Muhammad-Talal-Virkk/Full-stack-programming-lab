@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab Task 6 - API Fetcher</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .post { border: 1px solid #ccc; padding: 10px; margin: 5px 0; }
+        button { margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<h2>API Data Fetcher</h2>
+
+<button id="loadData">Load Posts</button>
+<div id="posts"></div>
+
+<script>
+$(document).ready(function(){
+
+    var limit = 3;
+
+    $("#loadData").click(function(){
+
+        $.get("https://jsonplaceholder.typicode.com/posts?_limit=" + limit,
+        function(data){
+
+            $("#posts").empty();
+
+            $.each(data, function(index, post){
+                $("#posts").append(
+                    "<div class='post'>" +
+                    "<h4>" + post.title + "</h4>" +
+                    "<p>" + post.body + "</p>" +
+                    "</div>"
+                );
+            });
+
+            limit += 3;
+        });
+
+    });
+
+});
+</script>
+
+</body>
+</html>
