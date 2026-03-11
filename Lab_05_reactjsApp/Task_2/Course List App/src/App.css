@@ -1,0 +1,10 @@
+body{
+  font-family: Arial;
+}
+
+.course{
+  border:1px solid #ccc;
+  padding:10px;
+  margin:10px;
+  width:250px;
+}
